@@ -34,7 +34,9 @@ def _json(root: Path, name: str) -> dict:
 
 def detect(project: Path, *, entrypoint: str | None = None, profile: str | None = None) -> Config:
     """Validate a supported project without reading environment or agent config values."""
-    root = Path(project)
+    root = Path(project).absolute()
+    if any(path.is_symlink() for path in (root, *root.parents)):
+        raise ProjectError('Symlinked project paths are unsupported; use a regular project directory.')
     if not root.is_dir():
         raise ProjectError('Project directory not found; supply an existing directory.')
     node = _file(root, 'package.json').is_file()
@@ -64,7 +66,7 @@ def detect(project: Path, *, entrypoint: str | None = None, profile: str | None 
     if not entrypoint:
         raise ProjectError('Detected Python project; provide --entrypoint with a relative .py file, for example app.py.')
     parts = PurePosixPath(entrypoint)
-    if (parts.is_absolute() or '\\' in entrypoint or any(part in ('', '.', '..') for part in entrypoint.split('/'))
+    if (parts.is_absolute() or entrypoint.startswith('-') or '\\' in entrypoint or any(part in ('', '.', '..') for part in entrypoint.split('/'))
             or not entrypoint.endswith('.py') or any(not (c.isalnum() or c in '_-./') or not c.isascii() for c in entrypoint)):
         raise ProjectError('Unsafe Python entry point; use a relative .py path with letters, digits, underscores, hyphens and slashes.')
     current = root
