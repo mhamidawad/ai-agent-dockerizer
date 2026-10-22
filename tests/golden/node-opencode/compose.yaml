@@ -1,0 +1,9 @@
+services:
+  agent:
+    build: .
+    env_file: .env
+    init: true
+    stdin_open: true
+    tty: true
+    labels:
+      ai.agent.profile: opencode

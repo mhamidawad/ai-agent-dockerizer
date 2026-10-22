@@ -1,0 +1,5 @@
+version: bootstrap
+active_epic: e01-generator
+epics:
+  - id: e01
+    path: specs/epics/e01-generator
