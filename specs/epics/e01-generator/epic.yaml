@@ -1,0 +1,7 @@
+id: e01
+title: Bootstrap generator and golden tests
+stories:
+  - id: e01s01
+    bcps: 5
+    spec: e01s01-generator.md
+    tasks: e01s01-tasks.yaml

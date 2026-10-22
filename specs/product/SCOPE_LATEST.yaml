@@ -1,0 +1,4 @@
+initiative: bootstrap-generator
+approved_scope: "Python standard-library CLI; npm lockfile/start and requirements.txt/explicit Python entry point; generic/pi/opencode profiles"
+outputs: [Dockerfile, compose.yaml, .env.example, .dockerignore, .github/workflows/docker-build.yml]
+non_goals: [publishing, deployment, launch-content, additional-package-managers]

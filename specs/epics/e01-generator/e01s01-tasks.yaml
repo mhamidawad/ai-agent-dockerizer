@@ -1,0 +1,29 @@
+story_id: e01s01
+title: Bootstrap safe deterministic generator
+status: passing
+bcps: 5
+tasks:
+  - id: 1
+    description: Detect stacks/profiles and render deterministic artifacts with golden coverage
+    verify: "python3 -m unittest discover -s tests -v"
+    risk: P0
+    status: passing
+    allure:
+      severity: critical
+      categories: [golden, Security Review]
+  - id: 2
+    description: Add safe CLI writes, dry-run, and regression coverage
+    verify: "python3 -m unittest discover -s tests -v"
+    risk: P0
+    status: passing
+    allure:
+      severity: critical
+      categories: [integration, Security Review]
+  - id: 3
+    description: Document usage and wire identical local and CI tests
+    verify: "python3 -m unittest discover -s tests -v"
+    risk: P3
+    status: passing
+    allure:
+      severity: minor
+      categories: [documentation, CI]

@@ -1,0 +1,7 @@
+active_epic: e01-generator
+active_story: e01s01
+branch: feat/bootstrap-generator
+phase: local-validation-complete
+remote_ci: pending-unpushed
+handoff:
+  next_skill: verify-work

@@ -1,0 +1,4 @@
+terms:
+  stack: "The application runtime: node or python."
+  profile: "Agent metadata and environment-key hints: generic, pi, or opencode."
+  golden: "Reviewed expected output bytes committed independently of test execution."
